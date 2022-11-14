@@ -18,7 +18,13 @@ export default {
 <template>
     <section class="characters">
         <div class="container p-5">
-            <div class="row row-cols-1 row-cols-md-5 g-4">
+            <!-- founded -->
+            <div class="founded mb-3 p-3">
+                Found {{ store.foundedItems }} characters
+            </div>
+
+            <!-- character item -->
+            <div class="row row-cols-1 row-cols-md-5 g-4 mx-2">
                 <CharacterItem v-for="character in store.characters" :character="character" />
             </div>
         </div>
@@ -30,5 +36,11 @@ export default {
 
 .container {
     background-color: $light;
+
+    .founded {
+        background-color: $dark;
+        color: $light;
+        font-weight: bold;
+    }
 }
 </style>

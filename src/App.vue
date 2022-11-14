@@ -21,9 +21,11 @@ export default {
         .then(response => {
           // console.log(response);
           this.store.characters = response.data
+          this.store.foundedItems = response.data.length
         })
         .catch(err => {
           console.log(err.message);
+          this.store.error = err.message
         })
     }
   },
