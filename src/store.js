@@ -4,5 +4,6 @@ export const store = reactive({
     urlApi: 'https://www.breakingbadapi.com/api/characters',
     characters: null,
     error: null,
-    foundedItems: null
+    foundedItems: null,
+    showLoader: true
 })

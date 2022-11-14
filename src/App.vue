@@ -22,6 +22,7 @@ export default {
           // console.log(response);
           this.store.characters = response.data
           this.store.foundedItems = response.data.length
+          this.store.showLoader = false
         })
         .catch(err => {
           console.log(err.message);
@@ -46,11 +47,5 @@ export default {
 </template>
 
 <style lang="scss">
-@use './assets/scss/partials/variables' as *;
 
-
-
-.container {
-  background-color: $light;
-}
 </style>
