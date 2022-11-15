@@ -1,5 +1,4 @@
 <script>
-import axios from 'axios';
 import { store } from '../store';
 
 export default {
@@ -7,28 +6,6 @@ export default {
     data() {
         return {
             store
-        }
-    },
-    methods: {
-        changeCategory() {
-            // console.log(this.store.selectedCategory);
-            const category = this.store.selectedCategory;
-            const url = `${this.store.urlApi}?category=${category}`;
-            console.log(url);
-
-            axios.get(url)
-                .then(response => {
-                    console.log(response);
-                    this.store.characters = response.data;
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        },
-
-        resetFilter() {
-            this.store.selectedCategory = '';
-            this.changeCategory();
         }
     }
 }
@@ -38,13 +15,13 @@ export default {
     <section class="search my-3">
         <div class="container d-flex align-items-center">
             <h5>Select a category</h5>
-            <select class="form-select mx-2" v-model="store.selectedCategory" @change="changeCategory()">
+            <select class="form-select mx-2" v-model="store.selectedCategory" @change="$emit('changeData')">
                 <option value="breaking">Breaking Bad</option>
                 <option value="better">Better Call Saul</option>
                 <option value="bad,">Both</option>
             </select>
             <span class="cross fs-5 d-flex justify-content-center rounded-circle" v-if="store.selectedCategory != ''"
-                @click="resetFilter()">
+                @click="$emit('resetData')">
                 x
             </span>
         </div>
