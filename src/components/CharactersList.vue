@@ -1,11 +1,13 @@
 <script>
 import { store } from '../store.js'
 import CharacterItem from './CharacterItem.vue';
+import LoaderItem from './LoaderItem.vue';
 
 export default {
     name: 'CharactersList',
     components: {
-        CharacterItem
+        CharacterItem,
+        LoaderItem
     },
     data() {
         return {
@@ -19,12 +21,9 @@ export default {
     <section class="characters">
         <div class="container p-5">
             <!-- loader -->
-            <div class="loader text-center" v-if="store.showLoader">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="sr-only"></span>
-                </div>
-            </div>
+            <LoaderItem v-if="store.showLoader" />
 
+            <!-- characters -->
             <div v-else>
                 <!-- founded -->
                 <div class="founded mb-3 p-3">
@@ -51,10 +50,6 @@ export default {
             background-color: $dark;
             color: $light;
             font-weight: bold;
-        }
-
-        .loader {
-            height: 100vh;
         }
     }
 }
