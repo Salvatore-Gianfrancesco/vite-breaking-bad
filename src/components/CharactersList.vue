@@ -13,6 +13,11 @@ export default {
         return {
             store
         }
+    },
+    computed: {
+        foundedCharacters() {
+            return this.store.characters.length;
+        }
     }
 }
 </script>
@@ -27,7 +32,7 @@ export default {
             <div v-else>
                 <!-- founded -->
                 <div class="founded mb-3 p-3">
-                    Found {{ store.foundedItems }} characters
+                    Found {{ foundedCharacters }} characters
                 </div>
 
                 <!-- character item -->
